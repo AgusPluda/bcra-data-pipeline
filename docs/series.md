@@ -8,9 +8,9 @@
 - unidad = En millones de ARS
 - primerFechaInformada = 1996-01-02
 
-Razon de Elección: Me parece una variable importante y tomarla como la primera para poder observar la evolucion de la totalidad del dinero legal del pais.
+*Razon de Elección:* Me parece una variable importante y tomarla como la primera para poder observar la evolucion de la totalidad del dinero legal del pais.
 
-Elegido por sobre: Circulacion monetaria, esto porque la base monetaria me parece un variable mas general que esta.
+*Elegido por sobre:* Circulacion monetaria, esto porque la base monetaria me parece un variable mas general que esta.
 
 ## 2. Inflacion Mensual
 
@@ -20,19 +20,19 @@ Elegido por sobre: Circulacion monetaria, esto porque la base monetaria me parec
 - unidad = En porcentaje
 - primerFechaInformada = 1943-03-31
 
-Razón de Elección: Otra variable tan importante como la base monetaria, y también porque en este pais es el tema que más se habla por escandalo en el rubro economico.
+*Razon de Elección:* Otra variable tan importante como la base monetaria, y también porque en este pais es el tema que más se habla por escandalo en el rubro economico.
 
-Elegido por sobre: Inflacion Interanual, porque esta variable es tranquilamente calculable usando la inflacion mensual.
+*Elegido por sobre:* Inflacion Interanual, porque esta variable es tranquilamente calculable usando la inflacion mensual.
 
 ## 3. Reservas Internacionales
 
 - id_variable = 1
-- descripcion = Reservas interancionales
+- descripcion = Reservas internacionales
 - periodicidad = D
 - unidad = En millones de USD
 - primerFechaInformada = 1996-01-03
 
-Razón de Elección: Es interesante mantenerse informado de las subidas y bajadas de las reservas internacionales del pais.
+*Razon de Elección:* Es interesante mantenerse informado de las subidas y bajadas de las reservas internacionales del pais.
 
 ## 4. Tipo cambiario minorista
 
@@ -42,9 +42,9 @@ Razón de Elección: Es interesante mantenerse informado de las subidas y bajada
 - unidad = Pesos argentino por dolar
 - primerFechaInformada = 2010-06-01
 
-Razón de Elección: Se elegio esta variable porque el argentino promedio siempre esta pendiente del valor del dolar de forma practicamente diaria.
+*Razon de Elección:* Se eligió esta variable porque el argentino promedio siempre esta pendiente del valor del dolar de forma practicamente diaria.
 
-Elegido por sobre: Tipo de cambio mayorista de referencia, el cambio minorista se tendria más en cuenta que el mayorista.
+*Elegido por sobre:* Tipo de cambio mayorista de referencia, el cambio minorista se tendria más en cuenta que el mayorista.
 
 ## 5. Tasa de Interes BADLAR de bancos privados (TNA)
 
@@ -54,16 +54,18 @@ Elegido por sobre: Tipo de cambio mayorista de referencia, el cambio minorista s
 - unidad = En porcentaje nominal
 - primerFechaInformada = 1999-01-04
 
-Razón de Eleccion: Estar al tanto de como cotizan los interes en los bancos privados para saber cuando y donde invertir un monto minimo de 1 millon de pesos.
+*Razon de Elección:* Estar al tanto de como cotizan los interes en los bancos privados para saber cuando y donde invertir un monto minimo de 1 millon de pesos.
 
-Elegido por sobre: Tasa de interes TM20 de bancos privados, esta tasa sirve para aquellos que quieran invertir en montos iguales o mayores a los 20 millones de pesos, por lo tanto no es tan acceible invertir de esa forma. Prefiero BADLAR por eso mismo. Y respecto a la misma tasa de interes pero en porcentaje efectivo, la tasa elegida tiene información desde 1999 mientras que la tasa de interes en porcentaje efectivo tiene historial desde 2020.
+*Elegido por sobre:* Tasa de interes TM20 de bancos privados, esta tasa sirve para aquellos que quieran invertir en montos iguales o mayores a los 20 millones de pesos, por lo tanto no es tan accesible invertir de esa forma. Prefiero BADLAR por eso mismo. 
+
+Y respecto a la misma tasa de interes pero en porcentaje efectivo, la tasa elegida tiene información desde 1999 mientras que la tasa de interes en porcentaje efectivo tiene historial desde 2020. Un detalle más sobre esto, estas tasas expresan lo mismo pero diferente forma, la que se eligió es una tasa nominal (TNA), mientras la otra es tasa efectiva, esto para dejar claro que cuando esten los marts de esta variable, sean visto como lo que son, porcentajes nominales.
 
 ## Detalles:
 
 ### Granularidad mixta
 
-Son todas variables con perioricidad diaria menos la Inflacion Mensual, que es de perioricidad mensual, se decidio mantener esta variable por gran interes que tiene en el mercado, además de que se asumira la nularidad que puede generarse en las extracciones de los datos.
+Son todas variables con periodicidad diaria menos la Inflacion Mensual, que es de periodicidad mensual, se decidio mantener esta variable por gran interes que tiene en el mercado, además de que se asumira la ausencia que puede generarse en las extracciones de los datos.
 
 ### Ninguna Serie se actualiza el mismo día
 
-Cada una tiene su propio rezago de publicación. Esto refuerza lo de la granularidad mixta: "hoy esta serie no trajo nada" es el estado normal, no una excepción — le pasa a las diarias también, no solo a la mensual. Nuevamente esto en el proceso de extracción se tendra presente.
+Cada una tiene su propio rezago de publicación. Esto refuerza lo de la granularidad mixta: "hoy esta serie no trajo nada" es el estado normal, no una excepción — le pasa a las diarias también, no solo a la mensual. Nuevamente esto en el proceso de extracción se tendrá presente.
