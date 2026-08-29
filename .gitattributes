@@ -1,0 +1,4 @@
+# Todo archivo de texto se guarda en el repo con finales de linea LF.
+# Critico en este proyecto: los .sql y .sh que se montan dentro de los
+# contenedores Linux fallan de forma ilegible si llegan con CRLF de Windows.
+* text=auto eol=lf

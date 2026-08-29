@@ -1,0 +1,38 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+build/
+dist/
+*.egg-info/
+
+# ---------- Entornos virtuales ----------
+.venv/
+venv/
+env/
+ENV/
+
+# ---------- Secretos / configuracion local ----------
+# .env lleva credenciales y el AIRFLOW_UID de esta maquina.
+# Lo que se versiona es .env.example.
+.env
+
+# ---------- Airflow ----------
+logs/
+airflow.cfg
+airflow.db
+plugins/
+
+# ---------- dbt ----------
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+
+# ---------- Editores / SO ----------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
