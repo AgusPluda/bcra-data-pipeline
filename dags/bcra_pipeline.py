@@ -17,9 +17,9 @@ from airflow.sdk import dag, task
 def bcra_pipeline():
 
     @task
-    def extract_bcra():
+    def extract_bcra(id_variable):
         results = requests.get(
-            "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/1?desde=2026-08-01&hasta=2026-08-28"
+            f"https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/{id_variable}?desde=2026-08-01&hasta=2026-08-28"
         )
         results_json = results.json()
         if results.status_code == 200:
@@ -58,8 +58,8 @@ def bcra_pipeline():
                         (fila["id_variable"], fila["fecha"], fila["valor"]),
                     )
             pg_conn.commit()
-
-    load_raw(extract_bcra())
-
+        
+    extraidos = extract_bcra.expand(id_variable=[15, 27, 1, 4, 7])
+    load_raw.expand(lista_detalle=extraidos)
 
 bcra_pipeline()

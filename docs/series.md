@@ -60,7 +60,7 @@
 
 Y respecto a la misma tasa de interes pero en porcentaje efectivo, la tasa elegida tiene información desde 1999 mientras que la tasa de interes en porcentaje efectivo tiene historial desde 2020. Un detalle más sobre esto, estas tasas expresan lo mismo pero diferente forma, la que se eligió es una tasa nominal (TNA), mientras la otra es tasa efectiva, esto para dejar claro que cuando esten los marts de esta variable, sean visto como lo que son, porcentajes nominales.
 
-## Detalles:
+## Detalles
 
 ### Granularidad mixta
 
