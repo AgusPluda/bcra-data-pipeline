@@ -1,0 +1,13 @@
+name: 'bcra_pipeline'           # nombre del proyecto dbt (podés dejarlo así)
+version: '1.0.0'
+profile: 'bcra_pipeline'        # tiene que matchear EXACTO la clave de arriba en profiles.yml
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+
+models:
+  bcra_pipeline:                # mismo nombre que "name" de arriba
+    staging:
+      +materialized: view       # los modelos de staging son vistas: livianos, sin duplicar datos
+    marts:
+      +materialized: table      # los marts son tablas: se recalculan pero quedan rápidos de leer

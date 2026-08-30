@@ -1,0 +1,12 @@
+bcra_pipeline:                         # tiene que matchear el "profile:" de dbt_project.yml
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('DBT_PG_HOST') }}"
+      user: "{{ env_var('DBT_PG_USER') }}"
+      password: "{{ env_var('DBT_PG_PASSWORD') }}"
+      port: "{{ env_var('DBT_PG_PORT') | int }}"
+      dbname: "{{ env_var('DBT_PG_DBNAME') }}"
+      schema: analytics                # el schema donde dbt va a crear TUS modelos (no el de raw)
+      threads: 4
