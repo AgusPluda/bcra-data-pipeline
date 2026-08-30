@@ -28,6 +28,8 @@ plugins/
 dbt/target/
 dbt/logs/
 dbt/dbt_packages/
+# ID anonimo de telemetria que dbt genera solo la primera vez que corre.
+dbt/.user.yml
 
 # ---------- Editores / SO ----------
 .vscode/
