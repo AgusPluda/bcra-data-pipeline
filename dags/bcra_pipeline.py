@@ -5,6 +5,7 @@ from datetime import datetime
 import psycopg
 import requests
 from airflow.hooks.base import BaseHook
+from airflow.providers.standard.operators.bash import BashOperator
 from airflow.sdk import dag, task
 
 
@@ -58,8 +59,16 @@ def bcra_pipeline():
                         (fila["id_variable"], fila["fecha"], fila["valor"]),
                     )
             pg_conn.commit()
-        
+
+    trigger_dbt = BashOperator(
+        task_id="trigger_dbt",
+        bash_command="/opt/dbt-venv/bin/dbt build --project-dir /opt/airflow/dbt --profiles-dir /opt/airflow/dbt",
+    )
+
     extraidos = extract_bcra.expand(id_variable=[15, 27, 1, 4, 7])
-    load_raw.expand(lista_detalle=extraidos)
+    cargados = load_raw.expand(lista_detalle=extraidos)
+
+    cargados >> trigger_dbt
+
 
 bcra_pipeline()
