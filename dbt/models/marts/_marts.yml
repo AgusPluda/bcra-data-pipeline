@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: fct_bcra_series_daily
+    columns:
+      - name: fecha
+        tests:
+          - not_null
+      - name: cifra
+        tests:
+          - not_null
+      - name: id_variable
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_bcra_variable')
+                field: id_variable
