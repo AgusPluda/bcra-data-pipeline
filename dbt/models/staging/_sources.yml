@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: >
+      Datos como los devuelve la API del BCRA, cargados por el DAG
+      bcra_pipeline (extract_bcra + load_raw), sin transformar.
+    tables:
+      - name: bcra_series
+        description: Una fila por (id_variable, fecha), con el UPSERT del DAG.
