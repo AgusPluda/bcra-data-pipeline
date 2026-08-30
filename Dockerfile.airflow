@@ -1,0 +1,7 @@
+FROM apache/airflow:3.3.1
+
+USER root
+
+RUN python -m venv /opt/dbt-venv
+RUN /opt/dbt-venv/bin/pip install dbt-postgres
+RUN chown -R airflow:root /opt/dbt-venv
