@@ -1,0 +1,6 @@
+id_variable,descripcion,unidad,periodicidad
+15,Base Monetaria,En millones de ARS,D
+27,Inflacion Mensual,En porcentaje,M
+1,Reservas Internacionales,En millones de USD,D
+4,Tipo Cambiario Minorista,Pesos argentino por dolar,D
+7,Tasa de Interes BADLAR de bancos privados,En porcentaje nominal,D
