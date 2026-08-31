@@ -76,7 +76,7 @@ pueden cortar el pipeline.
 Elección y justificación completas, incluida la exploración del catálogo de 1.610 series
 disponibles, en [`docs/series.md`](docs/series.md).
 
-## Decisiones que hay que poder defender
+## Decisiones tomadas en el proyecto
 
 **`LocalExecutor`, no `CeleryExecutor`.** El `docker-compose.yaml` oficial de Airflow trae Celery
 por defecto, con `redis`, `airflow-worker` y `flower` — reparto de tareas entre máquinas que en una
