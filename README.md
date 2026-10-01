@@ -17,11 +17,9 @@ stack completo levanta solo, sin instalar nada a mano.
 
 Es un proyecto explícitamente de **práctica**, no un repo insignia del portafolio: lo construí para
 aislar y aprender bien las dos piezas de ingeniería de datos que el resto de mi portafolio no
-mostraba — un **orquestador** y **transformación-como-código con tests** — antes de meterme con
-`gharchive-data-platform`, un proyecto bastante más grande (MinIO, Parquet, Spark, CI) que va a dar
-por sentado que estas dos herramientas ya las manejo. La fuente (una API chica, de payloads livianos
-y sin volumen que gestionar) fue deliberada: quería pelearme con Airflow y dbt, no con la
-infraestructura de la fuente al mismo tiempo.
+mostraba — un **orquestador** y **transformación-como-código con tests**. La fuente (una API chica,
+de payloads livianos y sin volumen que gestionar) fue deliberada: quería pelearme con Airflow y dbt,
+no con la infraestructura de la fuente al mismo tiempo.
 
 ## Arquitectura
 
@@ -86,11 +84,9 @@ con subprocesos). La acción concreta fue partir del compose oficial y borrar es
 
 **UPSERT, no append-only.** `raw.bcra_series` tiene `PRIMARY KEY (id_variable, fecha)` y el
 `INSERT ... ON CONFLICT DO UPDATE` pisa el valor viejo con el nuevo. Es una decisión de dominio: el
-BCRA revisa valores recientes, así que "el último GET gana" es lo correcto acá. El proyecto grande
-(`gharchive-data-platform`) va a usar el patrón opuesto — append-only sobre particiones horarias
-inmutables — porque ahí cada partición, una vez descargada, no cambia nunca. Que un mismo portafolio
-tenga los dos patrones, cada uno justificado por su fuente, es más interesante que aplicar siempre
-el mismo.
+BCRA revisa valores recientes, así que "el último GET gana" es lo correcto acá. Con una fuente cuyos
+datos, una vez publicados, no cambian nunca, el patrón adecuado sería el opuesto: append-only sobre
+particiones inmutables.
 
 **La trampa de los `idVariable` duplicados del BCRA.** El catálogo tiene **8 series** con la palabra
 BADLAR en la descripción. Las ids `7` y `35` son *la misma tasa*, expresada en convenciones
@@ -139,10 +135,9 @@ docker compose exec airflow-scheduler /opt/dbt-venv/bin/dbt build \
 ## Qué haría distinto
 
 - El rango de fechas de `extract_bcra` está hardcodeado (`2026-08-01` a `2026-08-28`) en vez de ser
-  dinámico (`hoy - N días`, o un backfill real con `catchup`). Fue deliberado — ese tema
-  (`catchup`, pools, ramificación) queda para `gharchive-data-platform`, donde sí importa un
-  backfill de semanas — pero en un pipeline que corra en producción de verdad, esto sería lo primero
-  a resolver.
+  dinámico (`hoy - N días`, o un backfill real con `catchup`). Fue deliberado, para mantener el
+  alcance acotado de una práctica, pero en un pipeline que corra en producción de verdad esto sería
+  lo primero a resolver.
 - `load_raw` abre una conexión a Postgres nueva por cada task instance (una por serie, vía
   `.expand()`). Para 5 series no importa; con más series querría un pool de conexiones.
 - Ningún test de dbt cubre que la serie mensual (inflación) efectivamente llegue *alguna vez* al mes
@@ -151,6 +146,6 @@ docker compose exec airflow-scheduler /opt/dbt-venv/bin/dbt build \
 
 ## Qué sigue
 
-Este repo cierra la práctica guiada de Airflow + dbt. El siguiente paso del roadmap es
-`gharchive-data-platform`: mismo par de herramientas, ya incorporado, sumando Docker+MinIO+Parquet
-+DuckDB+PySpark+CI sobre una fuente con volumen real (GH Archive).
+Este repo cierra la práctica guiada de Airflow + dbt. Una extensión posible, no planificada, sería
+llevar el mismo par de herramientas a una fuente con volumen real, sumando almacenamiento en objetos,
+Parquet y CI.
